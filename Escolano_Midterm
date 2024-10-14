@@ -1,0 +1,74 @@
+class Person {
+    private String name;
+    private int age;
+    public Person(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+    public void displayInfo() {
+        System.out.println("Name: " + name);
+        System.out.println("Age: " + age);
+    }
+}
+//Students Info
+class Student extends Person {
+    private String studentID;
+    private String course;
+    private int units;
+    private final int feePerUnit = 1000;
+    
+    public Student(String name, int age, String studentID, String course, int units) {
+        super(name, age);
+        this.studentID = studentID;
+        this.course = course;
+        this.units = units;
+    }
+    public double calculateFees() {
+        return units * feePerUnit;
+    }
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Student ID: " + studentID);
+        System.out.println("Course: " + course);
+        System.out.println("Units: " + units);
+        System.out.println("Total Fee: " + calculateFees());
+    }
+}
+//Instructors Info
+class Instructor extends Person {
+    private String employeeID;
+    private String department;
+    private double salary;
+    public Instructor(String name, int age, String employeeID, String department, double salary) {
+        super(name, age);
+        this.employeeID = employeeID;
+        this.department = department;
+        this.salary = salary;
+    }
+    public void displayInfo() {
+        super.displayInfo();
+        System.out.println("Employee ID: " + employeeID);
+        System.out.println("Department: " + department);
+        System.out.println("Salary: " + salary);
+    }
+}
+   public class UniversityEnrolmentSystem {
+    public static void printDetails(Person p) {
+        p.displayInfo();
+        System.out.println("----------------------");
+    }
+    public static void main(String[] args) {
+        Student student1 = new Student("John Laurence G. Escolan0", 20, "221006617", "BS Computer Engineering", 3);
+        Student student2 = new Student("Anilov Armando", 20, "221002270", "BS Computer Engineering", 3);
+
+        // Create Instructor objects
+        Instructor instructor1 = new Instructor("Tanya Carmela Jovillano", 23, "123456789", "BS Computer Engineering", 30000);
+        Instructor instructor2 = new Instructor("Sarrahlyn  Catimbang", 55, "987654321", "Mathematics", 60000);
+
+        // Print the details of each person
+        printDetails(student1);
+        printDetails(student2);
+        printDetails(instructor1);
+        printDetails(instructor2);
+    }
+}
